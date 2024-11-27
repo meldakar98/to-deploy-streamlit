@@ -189,9 +189,9 @@ else:
             st.markdown(
                 """
                 <div style="text-align: center; padding: 50px;">
-                    <h1>Thank You!</h1>
-                    <p style="font-size: 20px;">We appreciate your time and effort in evaluating these conversations.</p>
-                    <p style="font-size: 18px;">Your expert feedback is invaluable to our research.</p>
+                    <h1>Vielen Dank!</h1>
+                    <p style="font-size: 20px;">Wir danken Ihnen für Ihre Zeit und Mühe bei der Bewertung dieser Gespräche.</p>
+                    <p style="font-size: 18px;">Ihre Expertinnen-Rückmeldungen sind uns wertvoll für unsere Forschung.</p>
                 </div>
                 """,
                 unsafe_allow_html=True
