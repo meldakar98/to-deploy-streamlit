@@ -7,12 +7,12 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
-def load_credentials(file_path):
+def load_credentials():
     try:
-        with open(file_path) as f:
-            return json.load(f)
-    except FileNotFoundError:
-        st.error("Credentials file not found")
+        # Get credentials from streamlit secrets
+        return st.secrets["credentials"]
+    except Exception as e:
+        st.error("Error loading credentials")
         return {"experts": []}
 def verify_credentials(username, password, credentials):
     for expert in credentials["experts"]:
@@ -114,7 +114,7 @@ if not st.session_state.logged_in:
         submit = st.form_submit_button("Login")
         
         if submit:
-            credentials = load_credentials('credentials.json')
+            credentials = load_credentials()
             is_authenticated, is_admin = verify_credentials(username, password, credentials)
             if is_authenticated:
                 st.session_state.logged_in = True
