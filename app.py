@@ -65,6 +65,7 @@ if not st.session_state.logged_in:
                 st.session_state.logged_in = True
                 st.session_state.username = username
                 st.session_state.is_admin = is_admin
+                utils.send_email(evaluator_name=st.session_state.username+datetime.now().strftime("%m-%d:%H"),text="erfolgreich eingeloggt")
                 st.rerun()
             else:
                 st.error("Invalid credentials")
@@ -74,18 +75,12 @@ else:
         if st.sidebar.button("Download All Results"):
             # Load both rated files
             try:
-                with open(file1_path+"rated.json") as f:
-                    rated1 = json.load(f)
-                with open(file2_path+"rated.json") as f:
-                    rated2 = json.load(f)
                 
-                # Combine all evaluations
-                all_evaluations = rated1 + rated2
                 
                 # Create download button
                 st.sidebar.download_button(
                     label="Download JSON",
-                    data=json.dumps(all_evaluations, ensure_ascii=False, indent=4).encode('utf-8'),
+                    data=json.dumps(st.session_state.results, ensure_ascii=False, indent=4).encode('utf-8'),
                     file_name='all_evaluations.json',
                     mime='application/json'
                 )
