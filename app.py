@@ -197,40 +197,45 @@ else:
         if st.session_state.current_index < len(st.session_state.selected_conversations):
             current_conversation = st.session_state.selected_conversations[st.session_state.current_index]
             
+            # Display the conversation in the main area
             display_conversation(current_conversation)
 
-            with st.form(f"survey_form_{current_conversation['id']}"):
-                # Add rating questions based on predefined metrics
-                effectiveness = st.slider("Effectiveness", 1, 5, 3)
-                adaptivity = st.slider("Adaptivity", 1, 5, 3)
-                alliance = st.slider("Alliance", 1, 5, 3)
-                competence = st.slider("Competence", 1, 5, 3)
-                socratic = st.slider("Socratic Dialogue", 1, 5, 3)
-                
-                # Add text area for comments
-                comments = st.text_area("Additional comments", height=100)
-                
-                # Submit button
-                submitted = st.form_submit_button("Submit")
-                
-                if submitted:
-                    # Store results
-                    results[current_conversation['id']] = {
-                        "effectiveness": effectiveness,
-                        "adaptivity": adaptivity,
-                        "alliance": alliance,
-                        "competence": competence,
-                        "socratic": socratic,
-                        "comments": comments
-                    }
-                    st.success("Thank you for your feedback!")
+            # Display the evaluation form in the sidebar
+            with st.sidebar:
+                st.markdown("### Evaluation Form")
+                with st.form(f"survey_form_{current_conversation['id']}"):
+                    # Add rating questions based on predefined metrics
+                    effectiveness = st.slider("Effectiveness", 1, 5, 3)
+                    adaptivity = st.slider("Adaptivity", 1, 5, 3)
+                    alliance = st.slider("Alliance", 1, 5, 3)
+                    competence = st.slider("Competence", 1, 5, 3)
+                    socratic = st.slider("Socratic Dialogue", 1, 5, 3)
+                    
+                    # Add text area for comments
+                    comments = st.text_area("Additional comments", height=100)
+                    
+                    # Submit button
+                    submitted = st.form_submit_button("Submit")
+                    
+                    if submitted:
+                        # Store results
+                        results[current_conversation['id']] = {
+                            "effectiveness": effectiveness,
+                            "adaptivity": adaptivity,
+                            "alliance": alliance,
+                            "competence": competence,
+                            "socratic": socratic,
+                            "comments": comments
+                        }
+                        st.success("Thank you for your feedback!")
 
-                    # Update the conversation with the evaluation
-                    current_conversation['evaluations'].append(results[current_conversation['id']])
+                        # Update the conversation with the evaluation
+                        current_conversation['evaluations'].append(results[current_conversation['id']])
 
-                    # Move to the next conversation
-                    st.session_state.current_index += 1
-                    st.rerun()
+                        # Move to the next conversation
+                        st.session_state.current_index += 1
+                        st.rerun()
+                        
         else:
             # Thank you screen
             st.markdown(
