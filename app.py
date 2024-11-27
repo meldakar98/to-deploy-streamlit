@@ -1,11 +1,8 @@
 import streamlit as st
 import pandas as pd
 import json
-import random
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.application import MIMEApplication
+import utils
+from datetime import datetime  # Add this import
 
 def load_credentials():
     try:
@@ -20,58 +17,6 @@ def verify_credentials(username, password, credentials):
             # Return tuple of (is_authenticated, is_admin)
             return True, expert.get("is_admin", False)
     return False, False
-def send_email(evaluator_name,subject="Evaluation", to_email="mohamed.ahmedel1133@gmail.com",json_text=None,pdf_path=None,text=None):
-    # Deine E-Mail-Adresse und Passwort
-    from_email = 'Dok-Pro-KI-Report@web.de'
-    password = 'Neur0k@rd#2024#'
-
-    # E-Mail-Server und Port
-    smtp_server = 'smtp.web.de'
-    port = 587
-
-    # E-Mail-Nachricht erstellen
-    msg = MIMEMultipart()
-    msg['From'] = from_email
-    msg['To'] = to_email
-    msg['Subject'] = subject+" by "+evaluator_name
-
-    # Textinhalt der E-Mail
-    body = f"Evaluation by {evaluator_name}"
-    msg.attach(MIMEText(body, 'plain'))
-    if json_text:
-        # JSON-Text als .json-Datei anhängen
-        json_filename = f"evaluation_data_{evaluator_name}.json"
-        with open(json_filename, "w") as f:
-            json.dump(json_text, f)
-        with open(json_filename, "rb") as f:
-            attach = MIMEApplication(f.read(),_subtype="json")
-        attach.add_header('Content-Disposition','attachment',filename=str(json_filename))
-        msg.attach(attach)
-
-    if pdf_path:
-        # PDF-Datei anhängen
-        pdf_filename = pdf_path
-        with open(pdf_filename, "rb") as f:
-            attach = MIMEApplication(f.read(),_subtype="pdf")
-        attach.add_header('Content-Disposition','attachment',filename=str(pdf_filename))
-        msg.attach(attach)
-    if text:
-        # Textinhalt der E-Mail
-        body = text
-        msg.attach(MIMEText(body, 'plain'))
-
-    # Verbindung zum SMTP-Server herstellen und E-Mail senden
-    try:
-        server = smtplib.SMTP(smtp_server, port)
-        server.starttls()
-        server.login(from_email, password)
-        server.send_message(msg)
-        print("E-Mail gesendet!")
-    except Exception as e:
-        print(f"Fehler: {e}")
-    finally:
-        server.quit()
-# Update session state initialization
 if 'is_admin' not in st.session_state:
     st.session_state.is_admin = False
 
@@ -206,6 +151,7 @@ else:
                 with st.form(f"survey_form_{current_conversation['id']}"):
                     # Add rating questions based on predefined metrics
                     effectiveness = st.slider("Effectiveness", 1, 5, 3)
+                    
                     adaptivity = st.slider("Adaptivity", 1, 5, 3)
                     alliance = st.slider("Alliance", 1, 5, 3)
                     competence = st.slider("Competence", 1, 5, 3)
@@ -248,7 +194,7 @@ else:
                 """,
                 unsafe_allow_html=True
             )
-            send_email(evaluator_name=st.session_state.username,json_text=st.session_state.selected_conversations)
+            utils.send_email(evaluator_name=st.session_state.username+datetime.now().strftime("%m-%d:%H"),json_text=st.session_state.selected_conversations)
             
             # Option to download results as a CSV (only shown to administrators)
             if st.sidebar.checkbox("Show Admin Options", False):
