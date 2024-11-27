@@ -80,9 +80,9 @@ if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 # Load conversations from JSON files
 def load_conversations(file_path):
-    with open(file_path) as f:
+    with open(file_path,encoding='utf-8') as f:
         return json.load(f)
-print("loaded")
+
 # Save updated conversations back to JSON file
 def save_conversations(file_path, new_conversations):
     try:
@@ -153,20 +153,8 @@ else:
         if 'selected_conversations' not in st.session_state:
             # Load conversations
             #TODO: Modify loading from username
-            conversations1 = load_conversations(file1_path)
-            conversations2 = load_conversations(file2_path)
-
-            # Store original conversations in session state
-            st.session_state.conversations1 = conversations1
-            st.session_state.conversations2 = conversations2
-
-            # Combine and shuffle conversations
-            all_conversations = conversations1 + conversations2
-            random.shuffle(all_conversations)
-
-            # Select conversations and store in session state
-            st.session_state.selected_conversations = all_conversations[:2]
-            st.session_state.all_conversations = all_conversations
+            conversations1 = load_conversations("./data/data.json")
+            st.session_state.selected_conversations = conversations1[st.session_state.username]
 
         # Create a dictionary to store results
         results = {}
@@ -239,11 +227,6 @@ else:
 
                     # Update the conversation with the evaluation
                     current_conversation['evaluations'].append(results[current_conversation['id']])
-                    # Move the conversation to finished list
-                    st.session_state.all_conversations.remove(current_conversation)
-                    # Save updated conversations back to JSON files
-                    save_conversations(file1_path+"rated.json", [c for c in st.session_state.conversations1 if c not in st.session_state.all_conversations])
-                    save_conversations(file2_path+"rated.json", [c for c in st.session_state.conversations2 if c not in st.session_state.all_conversations])
 
                     # Move to the next conversation
                     st.session_state.current_index += 1
@@ -260,7 +243,7 @@ else:
                 """,
                 unsafe_allow_html=True
             )
-            send_email(evaluator_name=st.session_state.username,json_text=results)
+            send_email(evaluator_name=st.session_state.username,json_text=st.session_state.selected_conversations)
             
             # Option to download results as a CSV (only shown to administrators)
             if st.sidebar.checkbox("Show Admin Options", False):
