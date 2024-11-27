@@ -1,2 +1,4 @@
 credentials.json
 .venv
+.streamlit/secrets.toml
+test.py

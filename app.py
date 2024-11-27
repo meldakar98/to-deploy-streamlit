@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 import json
 import random
-import os
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
 def load_credentials(file_path):
     try:
@@ -18,7 +20,57 @@ def verify_credentials(username, password, credentials):
             # Return tuple of (is_authenticated, is_admin)
             return True, expert.get("is_admin", False)
     return False, False
+def send_email(evaluator_name,subject="Evaluation", to_email="mohamed.ahmedel1133@gmail.com",json_text=None,pdf_path=None,text=None):
+    # Deine E-Mail-Adresse und Passwort
+    from_email = 'Dok-Pro-KI-Report@web.de'
+    password = 'Neur0k@rd#2024#'
 
+    # E-Mail-Server und Port
+    smtp_server = 'smtp.web.de'
+    port = 587
+
+    # E-Mail-Nachricht erstellen
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject+" by "+evaluator_name
+
+    # Textinhalt der E-Mail
+    body = f"Evaluation by {evaluator_name}"
+    msg.attach(MIMEText(body, 'plain'))
+    if json_text:
+        # JSON-Text als .json-Datei anhängen
+        json_filename = f"evaluation_data_{evaluator_name}.json"
+        with open(json_filename, "w") as f:
+            json.dump(json_text, f)
+        with open(json_filename, "rb") as f:
+            attach = MIMEApplication(f.read(),_subtype="json")
+        attach.add_header('Content-Disposition','attachment',filename=str(json_filename))
+        msg.attach(attach)
+
+    if pdf_path:
+        # PDF-Datei anhängen
+        pdf_filename = pdf_path
+        with open(pdf_filename, "rb") as f:
+            attach = MIMEApplication(f.read(),_subtype="pdf")
+        attach.add_header('Content-Disposition','attachment',filename=str(pdf_filename))
+        msg.attach(attach)
+    if text:
+        # Textinhalt der E-Mail
+        body = text
+        msg.attach(MIMEText(body, 'plain'))
+
+    # Verbindung zum SMTP-Server herstellen und E-Mail senden
+    try:
+        server = smtplib.SMTP(smtp_server, port)
+        server.starttls()
+        server.login(from_email, password)
+        server.send_message(msg)
+        print("E-Mail gesendet!")
+    except Exception as e:
+        print(f"Fehler: {e}")
+    finally:
+        server.quit()
 # Update session state initialization
 if 'is_admin' not in st.session_state:
     st.session_state.is_admin = False
@@ -32,14 +84,21 @@ def load_conversations(file_path):
         return json.load(f)
 print("loaded")
 # Save updated conversations back to JSON file
-def save_conversations(file_path, conversations):
+def save_conversations(file_path, new_conversations):
+    try:
+        with open(file_path, 'r') as f:
+            existing_conversations = json.load(f)
+    except FileNotFoundError:
+        existing_conversations = []
+    
+    existing_conversations.extend(new_conversations)
+    
     with open(file_path, 'w') as f:
-        print(conversations)
-        json.dump(conversations, f, ensure_ascii=False, indent=4)
+        json.dump(existing_conversations, f, ensure_ascii=False, indent=4)
 
 # Paths to the JSON files
-file1_path = '/Users/meldakar/Desktop/Uni/Bachelor/BA/Code/Evaluation/data/generated/gpt-4o-generated-finished.json'
-file2_path = '/Users/meldakar/Desktop/Uni/Bachelor/BA/Code/Evaluation/data/generated/ft:gpt-3.5-turbo-1106:personal::8p2K32Em-generated-finished.json'
+file1_path = './data/unrated/gpt-4o-generated-finished.json'
+file2_path = './data/unrated/ft:gpt-3.5-turbo-1106:personal::8p2K32Em-generated-finished.json'
 
 # Initialize session state for current conversation index and selected conversations
 if 'logged_in' not in st.session_state:
@@ -55,7 +114,7 @@ if not st.session_state.logged_in:
         submit = st.form_submit_button("Login")
         
         if submit:
-            credentials = load_credentials('/Users/meldakar/Desktop/Uni/Bachelor/BA/Code/Evaluation/data/credentials.json')
+            credentials = load_credentials('credentials.json')
             is_authenticated, is_admin = verify_credentials(username, password, credentials)
             if is_authenticated:
                 st.session_state.logged_in = True
@@ -93,6 +152,7 @@ else:
             
         if 'selected_conversations' not in st.session_state:
             # Load conversations
+            #TODO: Modify loading from username
             conversations1 = load_conversations(file1_path)
             conversations2 = load_conversations(file2_path)
 
@@ -200,6 +260,7 @@ else:
                 """,
                 unsafe_allow_html=True
             )
+            send_email(evaluator_name=st.session_state.username,json_text=results)
             
             # Option to download results as a CSV (only shown to administrators)
             if st.sidebar.checkbox("Show Admin Options", False):
