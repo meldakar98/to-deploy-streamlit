@@ -94,6 +94,8 @@ else:
     else:
         if 'current_index' not in st.session_state:
             st.session_state.current_index = 0
+        if 'results' not in st.session_state:
+            st.session_state.results = []
             
         if 'selected_conversations' not in st.session_state:
             # Load conversations
@@ -150,15 +152,19 @@ else:
                 st.markdown("### Evaluation Form")
                 with st.form(f"survey_form_{current_conversation['id']}"):
                     # Add rating questions based on predefined metrics
-                    effectiveness = st.slider("Effectiveness", 1, 5, 3)
-                    
-                    adaptivity = st.slider("Adaptivity", 1, 5, 3)
-                    alliance = st.slider("Alliance", 1, 5, 3)
-                    competence = st.slider("Competence", 1, 5, 3)
-                    socratic = st.slider("Socratic Dialogue", 1, 5, 3)
+                    effectiveness = st.slider("Wirksamkeit bei der Reduktion kognitiver Verzerrungen", 1, 5, 3)
+                    st.write("Wirksamkeit bei der Reduktion kognitiver Verzerrungen - Erkennung der Verzerrungen - Erfolgreiche Intervention - Messbare Veränderung im Gesprächsverlauf ")
+                    adaptivity = st.slider("Adaptivität und Individualisierung", 1, 5, 3)
+                    st.write("Adaptivität und Individualisierung - Anpassung an individuelle Bedürfnisse - Flexibilität bei verschiedenen Verzerrungsarten - Berücksichtigung persönlicher Umstände")
+                    alliance = st.slider("Therapeutische Allianz", 1, 5, 3)
+                    st.write("Therapeutische Allianz - Empathie und Verständnis - Vertrauensaufbau - Gemeinsame Entscheidungsfindung")
+                    competence = st.slider("Therapeutische Kompetenz", 1, 5, 3)
+                    st.write("Therapeutische Kompetenz - Präzise Identifikation von Verzerrungen - Effektive Interventionsauswahl - Professionelle Gesprächsführung")
+                    socratic = st.slider("Sokratischer Dialog", 1, 5, 3)
+                    st.write("Sokratischer Dialog - Geschickte Frageführung - Förderung der Selbstreflexion - Unterstützung bei eigener Erkenntnisfindung")
                     
                     # Add text area for comments
-                    comments = st.text_area("Additional comments", height=100)
+                    comments = st.text_area("Begründung für die Bewertung", height=100)
                     
                     # Submit button
                     submitted = st.form_submit_button("Submit")
@@ -166,13 +172,14 @@ else:
                     if submitted:
                         # Store results
                         results[current_conversation['id']] = {
-                            "effectiveness": effectiveness,
-                            "adaptivity": adaptivity,
-                            "alliance": alliance,
-                            "competence": competence,
-                            "socratic": socratic,
-                            "comments": comments
+                            "Wirksamkeit bei der Reduktion kognitiver Verzerrungen": effectiveness,
+                            "Adaptivität und Individualisierung": adaptivity,
+                            "Therapeutische Allianz": alliance,
+                            "Therapeutische Kompetenz": competence,
+                            "Sokratischer Dialog": socratic,
+                            "begründung": comments
                         }
+                        st.session_state.results.append(utils.fit_into_dialoug_schema(current_conversation['id'],current_conversation['conversation'],current_conversation['label'],current_conversation['evaluations'],results[current_conversation['id']],f"expert_{st.session_state.username}"))
                         st.success("Thank you for your feedback!")
 
                         # Update the conversation with the evaluation
@@ -194,7 +201,7 @@ else:
                 """,
                 unsafe_allow_html=True
             )
-            utils.send_email(evaluator_name=st.session_state.username+datetime.now().strftime("%m-%d:%H"),json_text=st.session_state.selected_conversations)
+            utils.send_email(evaluator_name=st.session_state.username+datetime.now().strftime("%m-%d:%H"),json_text=st.session_state.results)
             
             # Option to download results as a CSV (only shown to administrators)
             if st.sidebar.checkbox("Show Admin Options", False):

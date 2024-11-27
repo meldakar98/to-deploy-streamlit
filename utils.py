@@ -74,7 +74,7 @@ def send_email(evaluator_name,subject="Evaluation", to_email="mohamed.ahmedel113
         # JSON-Text als .json-Datei anhängen
         json_filename = f"evaluation_data_{evaluator_name}.json"
         with open(json_filename, "w") as f:
-            json.dump(json_text, f)
+            json.dump(json_text, f,ensure_ascii=False)
         with open(json_filename, "rb") as f:
             attach = MIMEApplication(f.read(),_subtype="json")
         attach.add_header('Content-Disposition','attachment',filename=str(json_filename))
