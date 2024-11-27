@@ -152,16 +152,11 @@ else:
                 st.markdown("### Evaluation Form")
                 with st.form(f"survey_form_{current_conversation['id']}"):
                     # Add rating questions based on predefined metrics
-                    effectiveness = st.slider("Wirksamkeit bei der Reduktion kognitiver Verzerrungen", 1, 5, 3)
-                    st.write("Wirksamkeit bei der Reduktion kognitiver Verzerrungen - Erkennung der Verzerrungen - Erfolgreiche Intervention - Messbare Veränderung im Gesprächsverlauf ")
-                    adaptivity = st.slider("Adaptivität und Individualisierung", 1, 5, 3)
-                    st.write("Adaptivität und Individualisierung - Anpassung an individuelle Bedürfnisse - Flexibilität bei verschiedenen Verzerrungsarten - Berücksichtigung persönlicher Umstände")
-                    alliance = st.slider("Therapeutische Allianz", 1, 5, 3)
-                    st.write("Therapeutische Allianz - Empathie und Verständnis - Vertrauensaufbau - Gemeinsame Entscheidungsfindung")
-                    competence = st.slider("Therapeutische Kompetenz", 1, 5, 3)
-                    st.write("Therapeutische Kompetenz - Präzise Identifikation von Verzerrungen - Effektive Interventionsauswahl - Professionelle Gesprächsführung")
-                    socratic = st.slider("Sokratischer Dialog", 1, 5, 3)
-                    st.write("Sokratischer Dialog - Geschickte Frageführung - Förderung der Selbstreflexion - Unterstützung bei eigener Erkenntnisfindung")
+                    effectiveness = st.slider("Wirksamkeit bei der Reduktion kognitiver Verzerrungen", 1, 5, 3,help="Wirksamkeit bei der Reduktion kognitiver Verzerrungen \n - Erkennung der Verzerrungen \n - Erfolgreiche Intervention \n - Messbare Veränderung im Gesprächsverlauf ")
+                    adaptivity = st.slider("Adaptivität und Individualisierung", 1, 5, 3,help="Adaptivität und Individualisierung \n - Anpassung an individuelle Bedürfnisse \n - Flexibilität bei verschiedenen Verzerrungsarten \n - Berücksichtigung persönlicher Umstände")
+                    alliance = st.slider("Therapeutische Allianz", 1, 5, 3,help="Therapeutische Allianz \n - Empathie und Verständnis \n - Vertrauensaufbau \n - Gemeinsame Entscheidungsfindung")
+                    competence = st.slider("Therapeutische Kompetenz", 1, 5, 3,help="Therapeutische Kompetenz \n - Präzise Identifikation von Verzerrungen \n - Effektive Interventionsauswahl \n - Professionelle Gesprächsführung")
+                    socratic = st.slider("Sokratischer Dialog", 1, 5, 3,help="Sokratischer Dialog \n - Geschickte Frageführung \n - Förderung der Selbstreflexion \n - Unterstützung bei eigener Erkenntnisfindung")
                     
                     # Add text area for comments
                     comments = st.text_area("Begründung für die Bewertung", height=100)
