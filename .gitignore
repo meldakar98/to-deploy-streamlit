@@ -2,3 +2,5 @@ credentials.json
 .venv
 .streamlit/secrets.toml
 test.py
+evaluation.md
+evaluation_data_*.json
