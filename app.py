@@ -143,14 +143,14 @@ else:
 
                 # Display the evaluation form in the sidebar
                 with st.sidebar:
-                    st.markdown("### Evaluation Form ",help="- ⭐️ sehr schlecht \n - ⭐️⭐️ schlecht \n - ⭐️⭐️⭐️ befriedigend \n - ⭐️⭐️⭐️⭐️ gut \n - ⭐️⭐️⭐️⭐️⭐️ ausgezeichnet")
+                    st.markdown("### Evaluation Form ",help="- ⭐️ sehr schlecht \n - ⭐️⭐️ schlecht \n - ⭐️⭐️⭐️ mangelhaft \n - ⭐️⭐️⭐️⭐️ befriedigend  \n - ⭐️⭐️⭐️⭐️⭐️ gut \n - ⭐️⭐️⭐️⭐️⭐️⭐️ ausgezeichnet")
                     with st.form(f"survey_form_{current_conversation['id']}"):
                         # Add rating questions based on predefined metrics
-                        effectiveness = st.slider("Wirksamkeit bei der Reduktion kognitiver Verzerrungen", 1, 5, 3,help="Wirksamkeit bei der Reduktion kognitiver Verzerrungen \n - Erkennung der Verzerrungen \n - Erfolgreiche Intervention \n - Messbare Veränderung im Gesprächsverlauf ")
-                        adaptivity = st.slider("Adaptivität und Individualisierung", 1, 5, 3,help="Adaptivität und Individualisierung \n - Anpassung an individuelle Bedürfnisse \n - Flexibilität bei verschiedenen Verzerrungsarten \n - Berücksichtigung persönlicher Umstände ")
-                        alliance = st.slider("Therapeutische Allianz", 1, 5, 3,help="Therapeuten Beziehung  \n - Empathie und Verständnis \n - Vertrauensaufbau \n - Gemeinsame Entscheidungsfindung \n ")
-                        competence = st.slider("Therapeutische Kompetenz", 1, 5, 3,help="Therapeutische Kompetenz \n - Präzise Identifikation von Verzerrungen \n - Effektive Interventionsauswahl \n - Professionelle Gesprächsführung \n ")
-                        socratic = st.slider("Sokratischer Dialog", 1, 5, 3,help="Sokratischer Dialog \n - Geschickte Frageführung \n - Förderung der Selbstreflexion \n - Unterstützung bei eigener Erkenntnisfindung \n")
+                        effectiveness = st.slider("Wirksamkeit bei der Reduktion kognitiver Verzerrungen", 1, 6, 3,help="Wirksamkeit bei der Reduktion kognitiver Verzerrungen \n - Erkennung der Verzerrungen \n - Erfolgreiche Intervention \n - Messbare Veränderung im Gesprächsverlauf ")
+                        adaptivity = st.slider("Adaptivität und Individualisierung", 1, 6, 3,help="Adaptivität und Individualisierung \n - Anpassung an individuelle Bedürfnisse \n - Flexibilität bei verschiedenen Verzerrungsarten \n - Berücksichtigung persönlicher Umstände ")
+                        alliance = st.slider("Therapeutische Allianz", 1, 6, 3,help="Therapeuten Beziehung  \n - Empathie und Verständnis \n - Vertrauensaufbau \n - Gemeinsame Entscheidungsfindung \n ")
+                        competence = st.slider("Therapeutische Kompetenz", 1, 6, 3,help="Therapeutische Kompetenz \n - Präzise Identifikation von Verzerrungen \n - Effektive Interventionsauswahl \n - Professionelle Gesprächsführung \n ")
+                        socratic = st.slider("Sokratischer Dialog", 1, 6, 3,help="Sokratischer Dialog \n - Geschickte Frageführung \n - Förderung der Selbstreflexion \n - Unterstützung bei eigener Erkenntnisfindung \n")
                         
                         # Add text area for comments
                         comments = st.text_area("Begründung für die Bewertung", height=100)
@@ -228,12 +228,12 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - **Erfolgreiche Intervention**
 - **Messbare Veränderung im Gesprächsverlauf**
 
-**Bewertungsskala:**
 - ⭐️ 1 Stern: Sehr schlecht – Kognitive Verzerrungen werden nicht erkannt oder vollständig ignoriert.
 - ⭐️⭐️ 2 Sterne: Schlecht – Einige Verzerrungen werden erkannt, jedoch unvollständig oder fehlerhaft.
-- ⭐️⭐️⭐️ 3 Sterne: Befriedigend – Die meisten Verzerrungen werden erkannt, aber es gibt Verbesserungspotenzial.
-- ⭐️⭐️⭐️⭐️ 4 Sterne: Gut – Verzerrungen werden klar und größtenteils genau identifiziert.
-- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Ausgezeichnet – Alle Verzerrungen werden präzise und umfassend erkannt.
+- ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Mehrere Verzerrungen werden erkannt, aber es fehlen wichtige Aspekte.
+- ⭐️⭐️⭐️⭐️ 4 Sterne: Befriedigend – Die meisten Verzerrungen werden erkannt, jedoch gibt es Verbesserungspotenzial.
+- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Gut – Verzerrungen werden klar und größtenteils genau identifiziert.
+- ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Ausgezeichnet – Alle Verzerrungen werden präzise, umfassend und tiefgehend erkannt. 
 
 ---
 
@@ -243,11 +243,13 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - **Berücksichtigung persönlicher Umstände**
 
 **Bewertungsskala:**
+
 - ⭐️ 1 Stern: Sehr schlecht – Keine Anpassung an individuelle Umstände oder Bedürfnisse.
 - ⭐️⭐️ 2 Sterne: Schlecht – Eingeschränkte Anpassung; viele Bedürfnisse bleiben unberücksichtigt.
 - ⭐️⭐️⭐️ 3 Sterne: Befriedigend – Angemessene Anpassung mit einigen Lücken.
 - ⭐️⭐️⭐️⭐️ 4 Sterne: Gut – Gute Flexibilität und Individualisierung mit geringfügigen Verbesserungsmöglichkeiten.
-- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Ausgezeichnet – Hervorragende Anpassung an individuelle Umstände und Bedürfnisse.
+- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Hervorragende Anpassung an individuelle Umstände und Bedürfnisse.
+- ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Perfekte und kreative Anpassung, die alle individuellen Umstände und Bedürfnisse vollständig berücksichtigt.
 
 ---
 
@@ -257,11 +259,13 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - **Gemeinsame Entscheidungsfindung**
 
 **Bewertungsskala:**
+
 - ⭐️ 1 Stern: Sehr schlecht – Keine Empathie oder Vertrauensaufbau.
 - ⭐️⭐️ 2 Sterne: Schlecht – Begrenzte Empathie und ein schwaches Vertrauen.
-- ⭐️⭐️⭐️ 3 Sterne: Befriedigend – Angemessenes Verständnis und Vertrauen, aber mit Verbesserungspotenzial.
-- ⭐️⭐️⭐️⭐️ 4 Sterne: Gut – Gute Empathie und kooperativer Ansatz.
-- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Ausgezeichnet – Höchstmaß an Empathie, Vertrauen und Zusammenarbeit.
+- ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Grundlegendes Verständnis und Vertrauen, aber noch erhebliche Lücken.
+- ⭐️⭐️⭐️⭐️ 4 Sterne: Befriedigend – Angemessenes Verständnis und Vertrauen, aber mit Verbesserungspotenzial.
+- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Gute Empathie und ein kooperativer Ansatz mit wenigen Schwächen.
+- ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Höchstmaß an Empathie, tiefes Vertrauen und perfekte Zusammenarbeit.
 
 ---
 
@@ -271,12 +275,13 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - **Professionelle Gesprächsführung**
 
 **Bewertungsskala:**
+
 - ⭐️ 1 Stern: Sehr schlecht – Verzerrungen werden nicht erkannt, und Interventionen sind ineffektiv.
 - ⭐️⭐️ 2 Sterne: Schlecht – Unzureichende Präzision bei der Identifikation oder Auswahl der Intervention.
-- ⭐️⭐️⭐️ 3 Sterne: Befriedigend – Akzeptable Kompetenz mit deutlichem Verbesserungspotenzial.
-- ⭐️⭐️⭐️⭐️ 4 Sterne: Gut – Kompetente Identifikation und Interventionen mit minimalen Schwächen.
-- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Ausgezeichnet – Höchste Professionalität in Identifikation und Interventionen.
-
+- ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Grundlegende Kompetenz vorhanden, aber mit deutlichen Lücken.
+- ⭐️⭐️⭐️⭐️ 4 Sterne: Befriedigend – Akzeptable Identifikation und Interventionen mit Verbesserungspotenzial.
+- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Kompetente Identifikation und durchdachte Interventionen mit geringen Schwächen.
+- ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Höchste Professionalität mit präziser Identifikation und optimalen Interventionen.
 ---
 
 ### 5. **Sokratischer Dialog**
@@ -287,9 +292,10 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 **Bewertungsskala:**
 - ⭐️ 1 Stern: Sehr schlecht – Keine Förderung von Reflexion oder Erkenntnis.
 - ⭐️⭐️ 2 Sterne: Schlecht – Begrenzte Frageführung und Förderung der Reflexion.
-- ⭐️⭐️⭐️ 3 Sterne: Befriedigend – Ausreichende Unterstützung, aber mit Schwächen.
-- ⭐️⭐️⭐️⭐️ 4 Sterne: Gut – Gute Frageführung und Selbstreflexionsförderung.
-- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Ausgezeichnet – Herausragende Unterstützung bei Erkenntnisfindung und Reflexion.
+- ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Grundlegende Unterstützung vorhanden, aber mit deutlichen Schwächen.
+- ⭐️⭐️⭐️⭐️ 4 Sterne: Befriedigend – Ausreichende Frageführung und Reflexionsförderung mit Raum für Verbesserungen.
+- ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Effektive Frageführung und deutliche Förderung von Selbstreflexion und Erkenntnis.
+- ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Inspirierende Unterstützung mit außergewöhnlicher Förderung von Reflexion und tiefer Erkenntnis.
 
 ---
 
