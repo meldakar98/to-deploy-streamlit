@@ -231,7 +231,16 @@ In dieser Studie werden Ihnen generierte Gespräche zwischen einem KI-Patienten 
 Die Hauptziele dieser Studie sind:
 - Die Analyse der Erkennung und Reduktion kognitiver Verzerrungen durch KI-Assistenten.
 - Die Bewertung, ob Optimierungen der KI-Assistenten die Leistung und Qualität der Gespräche verbessern.
+---
 
+## Ablauf der Evaluation
+1. **Gesprächsbewertung:** Bewerten Sie die bereitgestellten Gespräche anhand der oben genannten Kriterien und geben Sie eine kurze Begründung für Ihre Bewertung ab.
+2. **Abschluss:** Am Ende können Sie Ihren Namen und eine kurze Vorstellung Ihrer Person eingeben, wenn Sie möchten, dass diese in der Studie erwähnt wird. sonst können Sie auch anonym bleiben.
+
+**Sie können das Bewertungsformular auch mehrmals ausfüllen.**
+                        
+
+---
 ## Evaluationsmetriken
 Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 
@@ -309,14 +318,7 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Effektive Frageführung und deutliche Förderung von Selbstreflexion und Erkenntnis.
 - ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Inspirierende Unterstützung mit außergewöhnlicher Förderung von Reflexion und tiefer Erkenntnis.
 
----
 
-## Ablauf der Evaluation
-1. **Beispielgespräch:** Zunächst wird ein Beispiel gezeigt, das Sie bewerten können. Diese Bewertung wird jedoch nicht gespeichert.
-2. **Gesprächsbewertung:** Bewerten Sie die bereitgestellten Gespräche anhand der oben genannten Kriterien.
-3. **Abschluss:** Am Ende können Sie Ihren Namen eingeben, wenn Sie möchten, dass er in der Studie erwähnt wird.
-
-Sie können das Bewertungsformular auch mehrmals ausfüllen.
 
 ---
 
