@@ -106,7 +106,7 @@ else:
             def display_conversation(conversation):
                 
                 # Display the conversation
-                st.write("### Conversation:")
+                
                 for turn in conversation['conversation']:
                     if turn['role'].lower() == 'therapist':
                         st.markdown(f"""
