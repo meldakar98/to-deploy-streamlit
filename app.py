@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import utils
+import random
 from datetime import datetime  # Add this import
 
 def load_credentials():
@@ -95,19 +96,30 @@ else:
                 # Load conversations
                 #TODO: Modify loading from username
                 conversations1 = load_conversations("./data/data.json")
-                st.session_state.selected_conversations = conversations1[st.session_state.username]
+                conversations1=conversations1[st.session_state.username]
+                st.session_state.selected_conversations =conversations1[-2:] + random.sample(conversations1[:-2], len(conversations1[:-2]))
 
             # Create a dictionary to store results
             results = {}
 
             # Function to display the current conversation
             def display_conversation(conversation):
-                st.subheader(f"Conversation ID: {conversation['id']}")
                 
                 # Display the conversation
                 st.write("### Conversation:")
                 for turn in conversation['conversation']:
-                    st.write(f"**{turn['role'].capitalize()}:** {turn['content']}")
+                    if turn['role'].lower() == 'therapist':
+                        st.markdown(f"""
+                            <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin: 5px 0;">
+                                <b>{turn['role'].capitalize()}:</b> {turn['content']}
+                            </div>
+                            """, unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"""
+                            <div style="background-color: #e0e0e0; padding: 10px; border-radius: 5px; margin: 5px 0;">
+                                <b>{turn['role'].capitalize()}:</b> {turn['content']}
+                            </div>
+                            """, unsafe_allow_html=True)
 
             # Main application logic
             st.title("Expert Evaluation Survey")
