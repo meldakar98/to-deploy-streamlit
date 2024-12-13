@@ -245,6 +245,7 @@ Die Hauptziele dieser Studie sind:
 Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 
 ### 1. **Wirksamkeit bei der Reduktion kognitiver Verzerrungen**
+**Dimensionen:**
 - **Erkennung der Verzerrungen**
 - **Erfolgreiche Intervention**
 - **Messbare Veränderung im Gesprächsverlauf**
@@ -259,6 +260,7 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 2. **Adaptivität und Individualisierung**
+**Dimensionen:**
 - **Anpassung an individuelle Bedürfnisse**
 - **Flexibilität bei verschiedenen Verzerrungsarten**
 - **Berücksichtigung persönlicher Umstände**
@@ -275,6 +277,7 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 3. **Therapeuten-Beziehung**
+**Dimensionen:**
 - **Empathie und Verständnis**
 - **Vertrauensaufbau**
 - **Gemeinsame Entscheidungsfindung**
@@ -291,6 +294,7 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 4. **Therapeutische Kompetenz**
+**Dimensionen:**
 - **Präzise Identifikation von Verzerrungen**
 - **Effektive Interventionsauswahl**
 - **Professionelle Gesprächsführung**
@@ -306,6 +310,7 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 5. **Sokratischer Dialog**
+**Dimensionen:**
 - **Geschickte Frageführung**
 - **Förderung der Selbstreflexion**
 - **Unterstützung bei eigener Erkenntnisfindung**
