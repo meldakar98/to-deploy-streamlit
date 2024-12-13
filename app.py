@@ -242,14 +242,19 @@ Die Hauptziele dieser Studie sind:
 
 ---
 ## Evaluationsmetriken
+                        
 Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 
 ### 1. **Wirksamkeit bei der Reduktion kognitiver Verzerrungen**
+                        
 **Dimensionen:**
+                        
 - **Erkennung der Verzerrungen**
 - **Erfolgreiche Intervention**
 - **Messbare Veränderung im Gesprächsverlauf**
-
+                        
+**Bewertungsskala:**
+                        
 - ⭐️ 1 Stern: Sehr schlecht – Kognitive Verzerrungen werden nicht erkannt oder vollständig ignoriert.
 - ⭐️⭐️ 2 Sterne: Schlecht – Einige Verzerrungen werden erkannt, jedoch unvollständig oder fehlerhaft.
 - ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Mehrere Verzerrungen werden erkannt, aber es fehlen wichtige Aspekte.
@@ -260,11 +265,13 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 2. **Adaptivität und Individualisierung**
+
 **Dimensionen:**
+                        
 - **Anpassung an individuelle Bedürfnisse**
 - **Flexibilität bei verschiedenen Verzerrungsarten**
 - **Berücksichtigung persönlicher Umstände**
-
+                        
 **Bewertungsskala:**
 
 - ⭐️ 1 Stern: Sehr schlecht – Keine Anpassung an individuelle Umstände oder Bedürfnisse.
@@ -277,11 +284,13 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 3. **Therapeuten-Beziehung**
+                        
 **Dimensionen:**
+                        
 - **Empathie und Verständnis**
 - **Vertrauensaufbau**
 - **Gemeinsame Entscheidungsfindung**
-
+                        
 **Bewertungsskala:**
 
 - ⭐️ 1 Stern: Sehr schlecht – Keine Empathie oder Vertrauensaufbau.
@@ -294,7 +303,9 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 ---
 
 ### 4. **Therapeutische Kompetenz**
+                        
 **Dimensionen:**
+                        
 - **Präzise Identifikation von Verzerrungen**
 - **Effektive Interventionsauswahl**
 - **Professionelle Gesprächsführung**
@@ -307,15 +318,19 @@ Die Gespräche sollen anhand der folgenden Kriterien bewertet werden:
 - ⭐️⭐️⭐️⭐️ 4 Sterne: Befriedigend – Akzeptable Identifikation und Interventionen mit Verbesserungspotenzial.
 - ⭐️⭐️⭐️⭐️⭐️ 5 Sterne: Sehr gut – Kompetente Identifikation und durchdachte Interventionen mit geringen Schwächen.
 - ⭐️⭐️⭐️⭐️⭐️⭐️ 6 Sterne: Exzellent – Höchste Professionalität mit präziser Identifikation und optimalen Interventionen.
+                                
 ---
 
 ### 5. **Sokratischer Dialog**
+                        
 **Dimensionen:**
+                        
 - **Geschickte Frageführung**
 - **Förderung der Selbstreflexion**
 - **Unterstützung bei eigener Erkenntnisfindung**
-
+                        
 **Bewertungsskala:**
+                        
 - ⭐️ 1 Stern: Sehr schlecht – Keine Förderung von Reflexion oder Erkenntnis.
 - ⭐️⭐️ 2 Sterne: Schlecht – Begrenzte Frageführung und Förderung der Reflexion.
 - ⭐️⭐️⭐️ 3 Sterne: Mangelhaft – Grundlegende Unterstützung vorhanden, aber mit deutlichen Schwächen.
