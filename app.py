@@ -204,7 +204,7 @@ else:
                     unsafe_allow_html=True
                 )
                 st.write("### Bitte geben Sie ihren Namen ein")
-                name = st.text_input("Name")
+                name = st.text_input("Name (optional)")
                 if st.button("Send Results"):
                     utils.send_email(evaluator_name=name+ " from " +st.session_state.username+" "+datetime.now().strftime("%m-%d:%H"),json_text=st.session_state.results)
                     st.session_state.clear()
